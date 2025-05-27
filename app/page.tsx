@@ -7,6 +7,7 @@ import type { Mesh, Group } from "three"
 import { Button } from "@/components/ui/button"
 import {
   Mic,
+  Mic2,
   FileText,
   Menu,
   X,
@@ -30,6 +31,8 @@ import {
   Cpu,
   Palette,
   Coins,
+  BrainCircuit,
+  MessagesSquare,
 } from "lucide-react"
 import Image from "next/image"
 import { toast } from "sonner"
@@ -1050,7 +1053,7 @@ function UseCasesSection() {
                 <div className="relative z-10">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6">
                     <div
-                      className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${useCase.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                      className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${useCase.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                     >
                       <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
@@ -1078,6 +1081,120 @@ function UseCasesSection() {
               </div>
             )
           })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function InfiniteSwiperSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  const features = [
+    {
+      title: "Custom Voice Agents",
+      icon: BrainCircuit,
+      color: "from-orange-500 to-orange-600",
+    },
+    {
+      title: "Rent a Voice Agent",
+      icon: Mic2,
+      color: "from-cream-400 to-cream-500",
+    },
+    {
+      title: "Conversational AI",
+      icon: MessagesSquare,
+      color: "from-orange-600 to-orange-700",
+    },
+  ]
+
+  return (
+    <section ref={sectionRef} className="py-16 bg-gradient-to-b from-black-950 to-black-900 relative overflow-hidden">
+      <div className="absolute inset-0">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-20">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div
+              key={`wave-${i}`}
+              className="absolute w-full h-24 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent animate-wave"
+              style={{
+                top: `${25 + i * 25}%`,
+                animationDelay: `${i * 0.5}s`,
+                transform: `rotate(${i * 2}deg)`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex overflow-hidden">
+          <div
+            className="flex animate-infinite-scroll whitespace-nowrap"
+            style={{ animationDuration: "20s" }}
+          >
+            {[...features, ...features].map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <div
+                  key={index}
+                  className={`inline-flex items-center justify-center space-x-4 mx-8 transition-all duration-500 ${
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                  style={{ transitionDelay: `${(index % features.length) * 200}ms` }}
+                >
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300`}
+                  >
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <span className="text-xl font-semibold text-cream-100">{feature.title}</span>
+                </div>
+              )
+            })}
+          </div>
+          <div
+            className="flex animate-infinite-scroll whitespace-nowrap"
+            style={{ animationDelay: "10s", animationDuration: "20s" }}
+          >
+            {[...features, ...features].map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <div
+                  key={`second-${index}`}
+                  className={`inline-flex items-center justify-center space-x-4 mx-8 transition-all duration-500 ${
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                  style={{ transitionDelay: `${(index % features.length) * 200}ms` }}
+                >
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300`}
+                  >
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <span className="text-xl font-semibold text-cream-100">{feature.title}</span>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -1151,7 +1268,9 @@ function Footer() {
             <h4 className="text-lg sm:text-xl font-bold text-cream-100 text-center sm:text-left">Connect With Us</h4>
             <div className="space-y-3 sm:space-y-4">
               <a
-                href="#"
+                href="https://t.me/haloaiportal"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex flex-col sm:flex-row items-center text-center sm:text-left space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-xl bg-cream-100/5 backdrop-blur-sm border border-orange-400/20 hover:bg-cream-100/10 hover:border-orange-400/40 transition-all duration-300 hover:scale-105"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
@@ -1168,7 +1287,9 @@ function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://x.com/i/flow/login?redirect_after_login=%2Fhaloaieth"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex flex-col sm:flex-row items-center text-center sm:text-left space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-xl bg-cream-100/5 backdrop-blur-sm border border-orange-400/20 hover:bg-cream-100/10 hover:border-orange-400/40 transition-all duration-300 hover:scale-105"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-black-800 to-black-950 rounded-lg flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
@@ -1264,6 +1385,35 @@ export default function HaloAIHero() {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+@keyframes wave {
+  0% {
+    transform: translateX(-100%) translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(0) translateY(-20px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(0) rotate(2deg);
+  }
+}
+
+.animate-wave {
+  animation: wave 8s linear infinite;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll linear infinite;
+}
     `
     document.head.appendChild(style)
 
@@ -1328,7 +1478,7 @@ export default function HaloAIHero() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-3 sm:px-0">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-3 sm:px-0">
               <AnimatedButton 
                 variant="primary" 
                 size="lg" 
@@ -1337,13 +1487,19 @@ export default function HaloAIHero() {
                 <span>Buy $HALO</span>
               </AnimatedButton>
 
-              <AnimatedButton 
-                variant="outline" 
-                size="lg" 
-                className="w-full sm:w-auto min-w-[200px] px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-lg"
+              <a 
+                href="https://t.me/haloaiportal" 
+                target="_blank" 
+                rel="noopener noreferrer"
               >
-                <span>Join Us</span>
-              </AnimatedButton>
+                <AnimatedButton 
+                  variant="outline" 
+                  size="lg" 
+                  className="w-full sm:w-auto min-w-[200px] px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-lg"
+                >
+                  <span>Join Us</span>
+                </AnimatedButton>
+              </a>
             </div>
           </div>
         </div>
@@ -1353,6 +1509,7 @@ export default function HaloAIHero() {
       <RoadmapSection />
       <TokenomicsSection />
       <UseCasesSection />
+      <InfiniteSwiperSection />
       <Footer />
     </div>
   )

@@ -497,7 +497,7 @@ function FeaturesSection() {
       icon: MessageCircle,
       title: "Conversational AI",
       description:
-        "Integrates ASR, LLMs and TTS to power smart voice enabled agents capable of natural conversation, turn-taking, interruptions and real-time API interactions.",
+        "HALO AI agents integrate Whisper ASR for real-time speech-to-text conversion, GPT-based LLMs for natural language understanding, and TTS for generating spoken responses, enabling smooth, real-time voice interactions. They support dynamic back-and-forth dialogue, memory retention, interrupt handling, and emotion tagging for more context-aware and human-like conversations.",
     },
     {
       icon: Waves,
@@ -507,7 +507,7 @@ function FeaturesSection() {
     },
     {
       icon: Bot,
-      title: "Custom Voice Agent Bots",
+      title: "Custom Voice Agents",
       description:
         "Build AI voice agents trained on your own data (human-like ) to deliver personalized, human-like responses for any use case.",
     },

@@ -18,7 +18,6 @@ import {
   Headphones,
   Radio,
   TrendingUp,
-  DollarSign,
   Users,
   Zap,
   Rocket,
@@ -33,6 +32,7 @@ import {
   Coins,
   BrainCircuit,
   MessagesSquare,
+  DollarSign,
 } from "lucide-react"
 import Image from "next/image"
 import { toast } from "sonner"
@@ -874,10 +874,23 @@ function TokenomicsSection() {
   }, [])
 
   const tokenomicsData = [
-    { label: "Name", value: "HALO AI", icon: DollarSign, color: "from-orange-500 to-orange-600" },
-    { label: "Token Name", value: "$HALO", icon: TrendingUp, color: "from-cream-400 to-cream-500" },
+    { 
+      label: "Name", 
+      value: "HALO AI", 
+      icon: () => (
+        <Image
+          src="/images/halo-logo.png"
+          alt="HALO AI Logo"
+          width={32}
+          height={32}
+          className="object-contain filter brightness-0 invert"
+        />
+      ), 
+      color: "from-orange-500 to-orange-600" 
+    },
+    { label: "Token Name", value: "$HALO", icon: DollarSign, color: "from-cream-400 to-cream-500" },
     { label: "Decimal", value: "9", icon: Zap, color: "from-black-600 to-black-700" },
-    { label: "Total Supply", value: "1M", icon: Users, color: "from-orange-600 to-cream-400" },
+    { label: "Total Supply", value: "1M", icon: Coins, color: "from-orange-600 to-cream-400" },
   ]
 
   return (
@@ -914,7 +927,11 @@ function TokenomicsSection() {
                   <div
                     className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                   >
-                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                    {typeof Icon === 'function' && Icon.name === '' ? (
+                      <Icon />
+                    ) : (
+                      <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                    )}
                   </div>
 
                   <h3 className="text-xs sm:text-sm font-semibold text-cream-100 mb-1 sm:mb-2 group-hover:text-orange-300 transition-colors duration-300">
@@ -936,8 +953,16 @@ function TokenomicsSection() {
         >
           <div className="group relative p-6 rounded-2xl bg-gradient-to-br from-black-800/80 to-black-700/60 backdrop-blur-xl border border-orange-500/20 hover:border-orange-400/50 transition-all duration-700 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/20">
             <div className="relative z-10 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Globe className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-[#627EEA] rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className="text-white">
+                  <path d="M16 32c8.837 0 16-7.163 16-16S24.837 0 16 0 0 7.163 0 16s7.163 16 16 16z" fill="#627EEA"/>
+                  <path d="M16.498 4v8.87l7.497 3.35L16.498 4z" fill="#fff" fillOpacity=".602"/>
+                  <path d="M16.498 4L9 16.22l7.498-3.35V4z" fill="#fff"/>
+                  <path d="M16.498 21.968v6.027L24 17.616l-7.502 4.352z" fill="#fff" fillOpacity=".602"/>
+                  <path d="M16.498 27.995v-6.027L9 17.616l7.498 10.379z" fill="#fff"/>
+                  <path d="M16.498 20.573l7.497-4.353-7.497-3.348v7.701z" fill="#fff" fillOpacity=".2"/>
+                  <path d="M9 16.22l7.498 4.353v-7.701L9 16.22z" fill="#fff" fillOpacity=".602"/>
+                </svg>
               </div>
               <h3 className="text-sm font-semibold text-cream-100 mb-2 group-hover:text-orange-300 transition-colors duration-300">
                 Chain

@@ -35,6 +35,7 @@ import {
   DollarSign,
 } from "lucide-react"
 import Image from "next/image"
+import { toast, Toaster } from "sonner"
 
 function VoiceWaveField() {
   const groupRef = useRef<Group>(null)
@@ -1010,8 +1011,8 @@ function UseCasesSection() {
       ],
     },
     {
-      title: "Customer Voice Support",
-      description: "Train an AI agent on your whitepaper and tokenomics. Let it speak to new users in simple, engaging language.",
+      title: "Customer Voice Agent Support",
+      description: "Train custom Voice Ai agent on your data. Let it speak to new users in simple, engaging language.",
       icon: Radio,
       color: "from-cream-400 to-cream-500",
       features: [
@@ -1492,6 +1493,10 @@ export default function HaloAIHero() {
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText("0xd8213956452dcb73e6085a6189f38e60a5e065f0");
+                    toast("Copied!", {
+                      duration: 1500,
+                      className: "bg-black-900 text-cream-100 border border-orange-500/30 rounded-lg text-sm",
+                    });
                   }}
                   id="copyButton"
                   className="ml-1 sm:ml-2 p-1 sm:p-1.5 rounded-md hover:bg-cream-100/10 transition-colors duration-300 flex-shrink-0 min-w-[32px] text-xs text-cream-300"
@@ -1540,6 +1545,7 @@ export default function HaloAIHero() {
       <UseCasesSection />
       <InfiniteSwiperSection />
       <Footer />
+      <Toaster position="top-center" />
     </div>
   )
 }

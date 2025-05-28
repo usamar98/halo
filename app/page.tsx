@@ -35,7 +35,6 @@ import {
   DollarSign,
 } from "lucide-react"
 import Image from "next/image"
-import { toast } from "sonner"
 
 function VoiceWaveField() {
   const groupRef = useRef<Group>(null)
@@ -507,9 +506,9 @@ function FeaturesSection() {
     },
     {
       icon: Bot,
-      title: "Custom Voice Agents",
+      title: "Customer Voice Support as a Service",
       description:
-        "Build AI voice agents trained on your own data (human-like ) to deliver personalized, human-like responses for any use case.",
+        "AI-powered voice agents trained on your project's documentation deliver real-time, natural-sounding support across Telegram and web. No live team required just accurate, brand-aligned assistance, available 24/7.",
     },
     {
       icon: Radio,
@@ -664,7 +663,6 @@ function RoadmapSection() {
         "Multilingual TTS system (38+ languages)",
         "Launch of real-time Conversational AI Agents",
         "Voice Cloning (Instant + Professional Tier)",
-        "Voice Changer (beta): Modify tone, gender and age",
         "Website V2, White-paper v2",
       ],
       color: "from-orange-500 to-orange-600",
@@ -1012,7 +1010,7 @@ function UseCasesSection() {
       ],
     },
     {
-      title: "Voice-Based Tokenomics Explainers",
+      title: "Customer Voice Support",
       description: "Train an AI agent on your whitepaper and tokenomics. Let it speak to new users in simple, engaging language.",
       icon: Radio,
       color: "from-cream-400 to-cream-500",
@@ -1377,68 +1375,68 @@ export default function HaloAIHero() {
       }
       
       @keyframes scan {
-  0% { 
-    transform: translateY(-100vh) scaleX(0.5); 
-    opacity: 0;
-  }
-  50% { 
-    opacity: 1;
-    transform: translateY(50vh) scaleX(1);
-  }
-  100% { 
-    transform: translateY(200vh) scaleX(0.5); 
-    opacity: 0;
-  }
-}
+        0% { 
+          transform: translateY(-100vh) scaleX(0.5); 
+          opacity: 0;
+        }
+        50% { 
+          opacity: 1;
+          transform: translateY(50vh) scaleX(1);
+        }
+        100% { 
+          transform: translateY(200vh) scaleX(0.5); 
+          opacity: 0;
+        }
+      }
 
-.animate-scan {
-  animation: scan 8s ease-in-out infinite;
-}
+      .animate-scan {
+        animation: scan 8s ease-in-out infinite;
+      }
 
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
-  }
-  33% { 
-    transform: translateY(-20px) rotate(1deg); 
-  }
-  66% { 
-    transform: translateY(-10px) rotate(-1deg); 
-  }
-}
+      @keyframes float {
+        0%, 100% { 
+          transform: translateY(0px) rotate(0deg); 
+        }
+        33% { 
+          transform: translateY(-20px) rotate(1deg); 
+        }
+        66% { 
+          transform: translateY(-10px) rotate(-1deg); 
+        }
+      }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
 
-@keyframes wave {
-  0% {
-    transform: translateX(-100%) translateY(0) rotate(-2deg);
-  }
-  50% {
-    transform: translateX(0) translateY(-20px) rotate(0deg);
-  }
-  100% {
-    transform: translateX(100%) translateY(0) rotate(2deg);
-  }
-}
+      @keyframes wave {
+        0% {
+          transform: translateX(-100%) translateY(0) rotate(-2deg);
+        }
+        50% {
+          transform: translateX(0) translateY(-20px) rotate(0deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(0) rotate(2deg);
+        }
+      }
 
-.animate-wave {
-  animation: wave 8s linear infinite;
-}
+      .animate-wave {
+        animation: wave 8s linear infinite;
+      }
 
-@keyframes infinite-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
+      @keyframes infinite-scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
 
-.animate-infinite-scroll {
-  animation: infinite-scroll linear infinite;
-}
+      .animate-infinite-scroll {
+        animation: infinite-scroll linear infinite;
+      }
     `
     document.head.appendChild(style)
 
@@ -1493,10 +1491,10 @@ export default function HaloAIHero() {
                 </div>
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText("0xd8213956452dcb73e6085a6189f38e60a5e065f0")
-                    toast.success("Contract address copied to clipboard!")
+                    navigator.clipboard.writeText("0xd8213956452dcb73e6085a6189f38e60a5e065f0");
                   }}
-                  className="ml-1 sm:ml-2 p-1 sm:p-1.5 rounded-md hover:bg-cream-100/10 transition-colors duration-300 flex-shrink-0"
+                  id="copyButton"
+                  className="ml-1 sm:ml-2 p-1 sm:p-1.5 rounded-md hover:bg-cream-100/10 transition-colors duration-300 flex-shrink-0 min-w-[32px] text-xs text-cream-300"
                 >
                   <Copy className="w-3 h-3 sm:w-4 sm:h-4 text-cream-300" />
                 </button>
@@ -1504,13 +1502,19 @@ export default function HaloAIHero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-3 sm:px-0">
-              <AnimatedButton 
-                variant="primary" 
-                size="lg" 
-                className="w-full sm:w-auto min-w-[200px] px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-lg"
+              <a 
+                href="https://app.uniswap.org/explore/tokens/ethereum/0xd8213956452DCB73E6085a6189F38e60a5E065f0?inputCurrency=NATIVE"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span>Buy $HALO</span>
-              </AnimatedButton>
+                <AnimatedButton 
+                  variant="primary" 
+                  size="lg" 
+                  className="w-full sm:w-auto min-w-[200px] px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-lg"
+                >
+                  <span>Buy $HALO</span>
+                </AnimatedButton>
+              </a>
 
               <a 
                 href="https://t.me/haloaiportal" 
